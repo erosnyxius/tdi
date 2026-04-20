@@ -1,0 +1,96 @@
+/* Motion CSS */
+
+/* ─── Global Focus Styles (WCAG 2.1 AA) ─── */
+:focus-visible {
+  outline: 3px solid #6CF2B0;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ─── Reduced Motion (WCAG 2.1 AA 2.3.3) ─── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.animate-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.hero-gradient {
+  background: linear-gradient(
+    120deg,
+    #081a1a 0%,
+    #0e4d4d 35%,
+    #092222 70%,
+    #040707 100%
+  );
+  background-size: 200% 200%;
+  animation: heroGradientMove 20s linear infinite;
+}
+
+@keyframes heroGradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.hero-noise {
+  position: absolute;
+  inset: 0;
+  background-image: url("/noise.png");
+  background-repeat: repeat;
+  opacity: 0.15;
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+}
+
+.hero-light {
+  position: absolute;
+  inset: -20%;
+  background: 
+    radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.25), transparent 45%),
+    radial-gradient(circle at 70% 60%, rgba(255, 255, 255, 0.18), transparent 45%),
+    radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.12), transparent 40%);
+  filter: blur(80px);
+  animation: heroLightDrift 80s linear infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes heroLightDrift {
+  0% {
+    transform: translate3d(-5%, -3%, 0);
+  }
+  100% {
+    transform: translate3d(5%, 3%, 0);
+  }
+}
+
+.hero-dots {
+  position: absolute;
+  inset: -60%;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.45) 2px, transparent 2px);
+  background-size: 18px 18px;
+  transform: rotate(-25deg) scale(1.6);
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.hero-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 0, 0, 0) 40%,
+    rgba(0, 0, 0, 0.45) 70%,
+    rgba(0, 0, 0, 0.9) 100%
+  );
+  pointer-events: none;
+}
