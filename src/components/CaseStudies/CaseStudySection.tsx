@@ -180,7 +180,7 @@ export function CaseStudySection() {
         <h2 className="text-4xl font-bold mb-12">Case Studies</h2>
         <div className="space-y-8">
           {caseStudies.map((study) => (
-            <CaseStudyPanel key={study.id} caseStudy={study} />
+            <CaseStudyPanel key={study.id} study={study} />
           ))}
         </div>
       </div>
