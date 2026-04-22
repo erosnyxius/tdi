@@ -37,7 +37,8 @@ export default function HomeClient() {
     <div 
       ref={scrollContainerRef}
       id="main-scroll-container"
-      className="relative h-[100svh] overflow-y-auto overflow-x-hidden bg-black scroll-smooth md:snap-y md:snap-mandatory"
+      className="relative h-[100svh] overflow-y-auto overflow-x-hidden bg-black scroll-smooth md:snap-y md:snap-mandatory touch-none"
+      style={{ touchAction: 'pan-y' }}
     >
       {/* Hero is the page header landmark */}
       <header>

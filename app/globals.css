@@ -49,8 +49,16 @@ body {
 /* Touch-action safe scrolling for card carousels */
 @media (max-width: 1023px) {
   .overflow-x-auto {
-    -webkit-overflow-scrolling: touch;
+    -webkit-overflow-scrolling: auto;
+    touch-action: none;
   }
+}
+
+html, body {
+  overflow-x: hidden !important;
+  width: 100% !important;
+  max-width: 100vw !important;
+  overscroll-behavior: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

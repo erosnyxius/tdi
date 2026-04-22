@@ -51,9 +51,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased overflow-x-hidden`}
     >
-      <body className="min-h-full flex flex-col text-textDark bg-black overflow-x-hidden">
+      <body className="min-h-full flex flex-col text-textDark bg-black overflow-x-hidden touch-none">
         {/* Google Tag Manager (noscript fallback if needed) */}
         <noscript>
           <iframe 
