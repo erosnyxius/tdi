@@ -53,8 +53,8 @@ const PhotoCard = ({ leader, index }: { leader: typeof leaders[0]; index: number
       aria-label={`${leader.name}, ${leader.role}`}
       className={`relative rounded-2xl md:rounded-3xl overflow-hidden bg-[#111] flex-shrink-0 snap-center shadow-2xl group focus:outline-none focus:ring-2 focus:ring-[#6CF2B0] focus-visible:ring-4
         ${isKeyPerson
-          ? "w-[130px] xs:w-[150px] sm:w-[280px] md:w-[320px] lg:w-[380px] h-[210px] xs:h-[230px] sm:h-[360px] md:h-[420px] lg:h-[480px] z-20 -translate-y-1 xs:-translate-y-2 sm:-translate-y-4 md:-translate-y-8 lg:-translate-y-10"
-          : "w-[90px] xs:w-[100px] sm:w-[150px] md:w-[200px] lg:w-[260px] h-[160px] xs:h-[170px] sm:h-[240px] md:h-[300px] lg:h-[360px] z-10 opacity-70 hover:opacity-100 focus:opacity-100 transition-opacity duration-500 -translate-y-1 xs:-translate-y-1 sm:-translate-y-3 md:-translate-y-5"
+          ? "w-[110px] xs:w-[130px] sm:w-[280px] md:w-[320px] lg:w-[380px] h-[180px] xs:h-[210px] sm:h-[360px] md:h-[420px] lg:h-[480px] z-20 -translate-y-1 xs:-translate-y-2 sm:-translate-y-4 md:-translate-y-8 lg:-translate-y-10"
+          : "w-[80px] xs:w-[100px] sm:w-[150px] md:w-[200px] lg:w-[260px] h-[150px] xs:h-[175px] sm:h-[240px] md:h-[300px] lg:h-[360px] z-10 opacity-70 hover:opacity-100 focus:opacity-100 transition-opacity duration-500 -translate-y-1 xs:-translate-y-1 sm:-translate-y-3 md:-translate-y-5"
         }`}
     >
       {/* Full-bleed photo */}
@@ -73,38 +73,27 @@ const PhotoCard = ({ leader, index }: { leader: typeof leaders[0]; index: number
       {/* Top subtle */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent pointer-events-none z-10" />
 
-      {/* Top-left: Role + Name */}
-      <div className="absolute top-0 left-0 w-full z-20 p-3 sm:p-4 md:p-5 lg:p-8 flex flex-col pointer-events-none">
-        <p className={`text-white/60 font-semibold mb-1 uppercase break-words ${
-          isKeyPerson ? "text-[8px] sm:text-[9px] md:text-[10px] tracking-widest" : "text-[7px] sm:text-[8px] md:text-[9px] tracking-wider"
+      {/* Bottom-left: Role + Name */}
+      <div className="absolute bottom-0 left-0 w-full z-20 p-2 xs:p-3 sm:p-4 md:p-5 lg:p-8 flex flex-col pointer-events-none bg-gradient-to-t from-black/90 via-black/70 to-transparent">
+        <p className={`text-white/70 font-semibold mb-0.5 uppercase break-words ${
+          isKeyPerson ? "text-[6px] xs:text-[7px] sm:text-[9px] md:text-[10px] tracking-widest" : "text-[5px] xs:text-[6px] sm:text-[8px] md:text-[9px] tracking-wider"
         }`}>
           {leader.role}
         </p>
-        <h3 className={`text-white font-medium break-words leading-snug w-full ${
-          isKeyPerson ? "text-[12px] sm:text-[14px] md:text-lg lg:text-3xl" : "text-[10px] sm:text-[12px] md:text-base lg:text-lg pr-2"
+        <h3 className={`text-white font-medium break-words leading-tight w-full ${
+          isKeyPerson ? "text-[9px] xs:text-[11px] sm:text-[14px] md:text-lg lg:text-3xl" : "text-[8px] xs:text-[10px] sm:text-[12px] md:text-base lg:text-lg pr-2"
         }`}>
           {leader.name}
         </h3>
       </div>
 
-      {/* Bottom-left: TDI Technologies watermark */}
-      {isKeyPerson && (
-        <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 md:bottom-5 md:left-5 lg:bottom-8 lg:left-8 z-20 opacity-50 bg-gradient-to-tr from-white/10 to-transparent p-2 sm:p-3 md:p-4 rounded-xl backdrop-blur-sm w-max">
-          <span className="font-sans font-bold text-white text-xs sm:text-sm md:text-lg lg:text-xl tracking-widest">
-            TDI
-            <span className="text-[7px] sm:text-[8px] font-normal tracking-normal ml-1 opacity-70 block -mt-1 uppercase">
-              Technologies
-            </span>
-          </span>
-        </div>
-      )}
     </motion.article>
   );
 };
 
 const Leadership: React.FC = () => {
   return (
-    <section aria-labelledby="leadership-heading" className="bg-white dark:bg-[#010404] text-textDark dark:text-white w-full flex flex-col items-center py-16 md:py-24 overflow-hidden relative border-t border-gray-100 dark:border-white/5">
+    <section aria-labelledby="leadership-heading" className="bg-white dark:bg-[#010404] text-textDark dark:text-white w-full max-w-full flex flex-col items-center py-16 md:py-24 overflow-hidden relative border-t border-gray-100 dark:border-white/5">
 
       {/* Header */}
       <motion.div
@@ -149,16 +138,16 @@ const Leadership: React.FC = () => {
       </div>
 
       {/* Mobile: Grid Layout - Key leaders on top, others below */}
-      <div className="md:hidden flex flex-col items-center gap-4 w-full pb-8">
+      <div className="md:hidden flex flex-col items-center gap-2 w-full max-w-full pb-8 overflow-hidden">
         {/* Top Row: Key Leaders */}
-        <div className="flex flex-row flex-nowrap gap-2 xs:gap-3 w-full justify-center px-2">
+        <div className="flex flex-row flex-nowrap justify-center gap-0 xs:gap-1 w-full max-w-full overflow-hidden px-1">
           {leaders.filter(l => l.key).map((leader, i) => (
             <PhotoCard key={`mobile-key-${i}`} leader={leader} index={leaders.indexOf(leader)} />
           ))}
         </div>
         
         {/* Bottom Row: Other Leaders */}
-        <div className="flex flex-row flex-nowrap gap-2 xs:gap-3 w-full justify-center px-2">
+        <div className="flex flex-row flex-nowrap justify-center gap-0 xs:gap-1 w-full max-w-full overflow-hidden px-1">
           {leaders.filter(l => !l.key).map((leader, i) => (
             <PhotoCard key={`mobile-other-${i}`} leader={leader} index={leaders.indexOf(leader)} />
           ))}
